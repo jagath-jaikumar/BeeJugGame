@@ -9,10 +9,25 @@
      <!--Let browser know website is optimized for mobile-->
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-
+     <style>
+           body {
+               animation: fadeInAnimation ease 3s;
+               animation-iteration-count: 1;
+               animation-fill-mode: forwards;
+           }
+           @keyframes fadeInAnimation {
+               0% {
+                   opacity: 0;
+               }
+               100% {
+                   opacity: 1;
+               }
+           }
+       </style>
    </head>
 
-   <body class="purple">
+
+   <body class="deep-purple lighten-3">
 
 
 
@@ -26,7 +41,7 @@
 
    </body>
    <footer class="page-footer purple" style="position:fixed;bottom:0;left:0;width:100%;">
-    <p class="right-align white-text"> powered by bee<p>
+    <p class="right-align white-text"> powered by bee and jug<p>
 </footer>
 
 
