@@ -1,11 +1,15 @@
-from flask import Flask, render_template, request
-app = Flask(__name__)
+from flask import Flask, render_template, request, session
+import random
 
-name = '0'
-score = 0
+
+app = Flask(__name__)
+app.secret_key = 'some secret key'
 
 @app.route("/")
-def hello():
+def home():
+    session["name"] = '0'
+    session["score"] = 0
+    session["checkpoint"] = '/agreement'
     return render_template('game/index.html')
 
 
@@ -18,24 +22,35 @@ def character_select():
 
 @app.route("/agreement", methods=["GET","POST"])
 def agreement():
-    global name
 
-    name = request.form["firstname"]
-    if name == "":
-        name = 'Wandering Traveler'
+    try:
+        session["name"] = request.form["firstname"]
+        if session["name"] == "":
+            session["name"] = 'Wandering Traveler'
+    except:
+        pass
 
-    return render_template('game/agreement.html', name=name)
+    return render_template('game/agreement.html', name=session["name"])
 
 
 @app.route("/lose")
 def lose():
+    global score
 
-    return "you lose"
+    lose_options = ['You Lose!', 'Better Luck Next Time', "Gave it your best shot...", "Oh well"]
+    index = random.randint(0,len(lose_options)-1)
+    lose_line = lose_options[index]
 
+    return render_template('game/lose.html', lose_line = lose_line, score=session["score"], checkpoint=session["checkpoint"])
+
+
+@app.route("/about")
+def about():
+    return render_template('extra/about.html')
 
 @app.route("/round1")
 def round1():
-    return "prep round1"
+    return render_template('game/rounds/round1.html')
 
 
 @app.route("/round2")

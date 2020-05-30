@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="valign-wrapper" style="width:100%;height:100%;position: absolute;">
+    <div class="valign" style="width:100%;">
+        <div class="container">
+           <div class="row">
+              <div class="col s12 m6 offset-m3">
+                 <div class="card purple">
+                    <div class="card-content">
+                       <h3 class="white-text">Round 1</h3>
+                       <br>
+                       <p class="white-text">Imagine the following scenario: You have a big date with your significant other tonight at the Providence Athanaeum. It's a murder mystery gala, so quite the glitzy event.</p>
+                       <br>
+                       <p class="white-text">They insist on meeting there, and you reluctantly agree. You arrive early (of course) and get there well before anyone else.</p>
+                       <br>
+                       <p class="white-text">You decide to explore a bit before the event, and go down to the rare books room. Once you enter, the door closes and the lock clicks- you're trapped!</p>
+                       <br>
+                       <p class="white-text">You must find a way out before the gala starts!</p>
+                 </div>
+
+                 <div class="card-action">
+                    <h6 class = "white-text"> What should you do first?</h6> <br>
+                    <a href="{{ checkpoint }}" class="yellow-text"> Look around the room </a> <br> <br>
+                    <a href="{{ checkpoint }}" class="yellow-text"> Examine the door </a> <br> <br>
+                    <a href="{{ checkpoint }}" class="yellow-text"> Check my pockets </a> <br> <br>
+                 </div>
+              </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
